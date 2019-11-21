@@ -14,7 +14,7 @@ install:
 script:
   # Build the shared library written in Go 
   - unset GOARCH GOBIN GOEXE GOHOSTARCH GOHOSTOS GOOS GORACE GOROOT GOTOOLDIR CC GOGCCFLAGS CGO_ENABLED
-  - export GOROOT=/usr/local
+  - export PATH=/usr/local/bin:$PATH
   - export GOPATH=$HOME/go
   - export GO111MODULE=on
   - export COMMIT="${TRAVIS_BUILD_NUMBER}" # "${TRAVIS_JOB_WEB_URL} on $(date +'%Y-%m-%d_%T')"
@@ -25,7 +25,7 @@ script:
   - sudo tar -C /usr/local -xzf go*.tar.gz --strip 1
   - cd sharedlibrary/gotranslate
   - /usr/local/bin/go mod vendor
-  - go build -o libgotranslate.so -buildmode=c-shared *.go
+  - /usr/local/bin/go build -o libgotranslate.so -buildmode=c-shared *.go
   # Build the Qt GUI application
   - cd ..
   - qmake CONFIG+=release PREFIX=/usr
