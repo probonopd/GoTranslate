@@ -12,7 +12,20 @@ install:
   - source /opt/qt*/bin/qt*-env.sh
 
 script:
-  - cd sharedlibrary
+  # Build the shared library written in Go 
+  - unset GOARCH GOBIN GOEXE GOHOSTARCH GOHOSTOS GOOS GORACE GOROOT GOTOOLDIR CC GOGCCFLAGS CGO_ENABLED
+  - export GOPATH=$HOME/go
+  - export COMMIT="${TRAVIS_BUILD_NUMBER}" # "${TRAVIS_JOB_WEB_URL} on $(date +'%Y-%m-%d_%T')"
+  - export VERSION=$TRAVIS_BUILD_NUMBER
+  - if [ "aarch64" == "$TRAVIS_ARCH" ] ; then export ARCH=arm64 ; fi
+  - if [ "amd64" == "$TRAVIS_ARCH" ] ; then export ARCH=amd64 ; fi
+  - wget -q https://dl.google.com/go/go1.13.4.linux-$ARCH.tar.gz
+  - sudo tar -C /usr/local -xzf go*.tar.gz
+  - cd sharedlibrary/gotranslate
+  - go get -v ./...
+  - go build -o libgotranslate.so -buildmode=c-shared *.go
+  # Build the Qt GUI application
+  - cd ..
   - qmake CONFIG+=release PREFIX=/usr
   - make -j$(nproc)
   - make INSTALL_ROOT=appdir -j$(nproc) install ; find appdir/
