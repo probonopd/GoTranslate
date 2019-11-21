@@ -33,8 +33,8 @@ script:
   - qmake CONFIG+=release PREFIX=/usr
   - make -j$(nproc)
   - make INSTALL_ROOT=appdir -j$(nproc) install
-  - mkdir -p appdir/usr/bin ; cp gotranslate appdir/usr/bin/
-  - mkdir -p appdir/usr/share/applications ; cp gotranslate.desktop appdir/usr/share/applications/
+  - mkdir -p appdir/usr/bin ; cp GoTranslate appdir/usr/bin/
+  - mkdir -p appdir/usr/share/applications ; cp ../gotranslate.desktop appdir/usr/share/applications/
   - mkdir -p appdir/usr/share/icons/hicolor/128x128/apps/ ; touch appdir/usr/share/icons/hicolor/128x128/apps/gotranslate.png # FIXME
   - find appdir/
   - wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
