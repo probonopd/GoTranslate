@@ -24,7 +24,7 @@ script:
   - wget -q https://dl.google.com/go/go1.13.4.linux-$ARCH.tar.gz
   - sudo tar -C /usr/local -xzf go*.tar.gz --strip 1
   - cd sharedlibrary/gotranslate
-  - go mod vendor
+  - /usr/local/bin/go mod vendor
   - go build -o libgotranslate.so -buildmode=c-shared *.go
   # Build the Qt GUI application
   - cd ..
