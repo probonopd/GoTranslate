@@ -14,6 +14,7 @@ install:
 script:
   # Build the shared library written in Go 
   - unset GOARCH GOBIN GOEXE GOHOSTARCH GOHOSTOS GOOS GORACE GOROOT GOTOOLDIR CC GOGCCFLAGS CGO_ENABLED
+  - export GOROOT=/usr/local
   - export GOPATH=$HOME/go
   - export GO111MODULE=on
   - export COMMIT="${TRAVIS_BUILD_NUMBER}" # "${TRAVIS_JOB_WEB_URL} on $(date +'%Y-%m-%d_%T')"
