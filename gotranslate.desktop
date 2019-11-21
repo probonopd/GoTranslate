@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=GoTranslate
+Comment=A minimal examples for combining Go code with a Qt GUI
+Exec=GoTranslate
+Icon=gotranslate
+Categories=Utility;Dictionary;TextTools;
