@@ -21,7 +21,7 @@ script:
   - if [ "aarch64" == "$TRAVIS_ARCH" ] ; then export ARCH=arm64 ; fi
   - if [ "amd64" == "$TRAVIS_ARCH" ] ; then export ARCH=amd64 ; fi
   - wget -q https://dl.google.com/go/go1.13.4.linux-$ARCH.tar.gz
-  - sudo tar -C /usr/local -xzf go*.tar.gz
+  - sudo tar -C /usr/local -xzf go*.tar.gz --strip 1
   - cd sharedlibrary/gotranslate
   - go mod vendor
   - go build -o libgotranslate.so -buildmode=c-shared *.go
