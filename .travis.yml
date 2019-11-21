@@ -43,7 +43,7 @@ script:
 
 after_success:
   - wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
-  - bash upload.sh QtGoTranslate*.AppImage*
+  - bash upload.sh GoTranslate*.AppImage*
   
 branches:
   except:
