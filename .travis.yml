@@ -26,6 +26,8 @@ script:
   - cd sharedlibrary/gotranslate
   - /usr/local/bin/go mod vendor
   - /usr/local/bin/go build -o libgotranslate.so -buildmode=c-shared *.go
+  - sudo cp libgotranslate.so /usr/lib/
+  - sudo cp libgotranslate.h /usr/include/gotranslate.h
   # Build the Qt GUI application
   - cd ..
   - qmake CONFIG+=release PREFIX=/usr
