@@ -1,4 +1,4 @@
-# GoTranslate
+# GoTranslate [![Build Status](https://travis-ci.com/probonopd/QtGoTranslate.svg?branch=master)](https://travis-ci.com/probonopd/QtGoTranslate)
 
 This project contains two minimal examples for combining Go code with Qt GUIs.
 
